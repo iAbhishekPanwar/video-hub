@@ -9,6 +9,7 @@ import {
   Button,
   useDisclosure,
   VStack,
+  HStack,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { BiMenuAltLeft } from 'react-icons/bi';
@@ -38,23 +39,43 @@ const Header = () => {
           <DrawerCloseButton />
           <DrawerHeader>Video Hub</DrawerHeader>
           <DrawerBody>
-            <VStack>
-              <Button variant={'ghost'} colorScheme="purple">
+            <VStack alignItems={'flex-start'}>
+              <Button onClick={onClose} variant={'ghost'} colorScheme="purple">
                 <Link to={'/'}>Home</Link>
               </Button>
 
-              <Button variant={'ghost'} colorScheme="purple">
+              <Button onClick={onClose} variant={'ghost'} colorScheme="purple">
                 <Link to={'/videos'}>Videos</Link>
               </Button>
 
-              <Button variant={'ghost'} colorScheme="purple">
+              <Button onClick={onClose} variant={'ghost'} colorScheme="purple">
                 <Link to={'/videos?category=free'}>Free Videos</Link>
               </Button>
 
-              <Button variant={'ghost'} colorScheme="purple">
+              <Button onClick={onClose} variant={'ghost'} colorScheme="purple">
                 <Link to={'/upload'}>Upload Video</Link>
               </Button>
             </VStack>
+
+            <HStack
+              pos={'absolute'}
+              bottom={'10'}
+              left={'0'}
+              w={'full'}
+              justifyContent={'space-evenly'}
+            >
+              <Button onClick={onClose} colorScheme="purple">
+                <Link to={'/login'}>Log in</Link>
+              </Button>
+
+              <Button
+                onClick={onClose}
+                colorScheme="purple"
+                variant={'outline'}
+              >
+                <Link to={'/signup'}>Sign up</Link>
+              </Button>
+            </HStack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
